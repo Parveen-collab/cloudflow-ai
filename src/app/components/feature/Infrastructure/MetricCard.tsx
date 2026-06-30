@@ -52,7 +52,7 @@ export default function MetricCard({
         delay,
       }}
     >
-      <div className={styles.header}>
+      <header className={styles.header}>
         <div className={styles.label}>
           {icon}
           <span>{label}</span>
@@ -65,7 +65,7 @@ export default function MetricCard({
             suffix={suffix}
           />
         </div>
-      </div>
+      </header>
 
       <div className={styles.track}>
         <motion.div

@@ -31,7 +31,6 @@ export default function Optimization() {
         align="center"
       />
 
-      <ScaleReveal className={styles.wrapper}>
         <HoverLift>
           <Card className={styles.card} hover>
             {!reduced && (
@@ -83,7 +82,6 @@ export default function Optimization() {
             </div>
           </Card>
         </HoverLift>
-      </ScaleReveal>
     </section>
   );
 }

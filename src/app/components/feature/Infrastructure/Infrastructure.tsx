@@ -16,7 +16,10 @@ const providers = ["AWS", "Azure", "Google", "On-Prem"];
 
 export default function Infrastructure() {
   return (
-    <section className={styles.section}>
+    <section
+      className={styles.section}
+      aria-labelledby="cloud-providers-heading"
+    >
       <Heading
         eyebrow="Infrastructure Analysis"
         title="AI analyzes every connected workload"
