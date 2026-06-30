@@ -1,36 +1,305 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CloudFlow AI
 
-## Getting Started
+A modern frontend engineering challenge submission for **Atomity**.
 
-First, run the development server:
+This project reimagines the cloud infrastructure visualization shown in the challenge video (Option B: 0:45–0:55) as an interactive, scroll-driven storytelling experience.
+
+Instead of reproducing the reference video, I interpreted the concept and designed a more product-focused experience that demonstrates cloud analysis, AI optimization, and infrastructure savings.
+
+---
+
+# Preview
+
+## Cloud Providers
+
+![Cloud Providers](image.png)
+
+## Infrastructure Analysis
+![Infrastructure Analysis](image-1.png)
+
+## Resource Metrics
+![Resource Metrics](image-4.png)
+
+## Optimization Results
+![Optimization Results](image-5.png)
+
+## Monthly Savings
+![Monthly Savings](image-3.png)
+
+## Live Demo
+
+https://YOUR-VERCEL-URL.vercel.app
+
+## GitHub Repository
+
+https://github.com/Parveen-collab/cloudflow-ai
+
+---
+
+# Why I Chose Option B
+
+I selected **Option B (0:45–0:55)** because it provided more opportunities to demonstrate frontend engineering skills than Option A.
+
+Rather than recreating the original visualization pixel-for-pixel, I focused on building an experience that tells a complete product story:
+
+Cloud Providers
+
+↓
+
+Infrastructure Analysis
+
+↓
+
+AI Optimization
+
+↓
+
+Resource Metrics
+
+↓
+
+Optimization Results
+
+↓
+
+Monthly Savings
+
+The goal was to transform a short product animation into an engaging, interactive SaaS landing page section.
+
+---
+
+# Features
+
+- Scroll-driven storytelling
+- Animated cloud provider cards
+- Infrastructure visualization
+- AI optimization engine
+- Animated KPI cards
+- Count-up statistics
+- Optimization summary
+- Responsive layout
+- Accessible interactions
+- Design token architecture
+- API-driven content
+- Cached data using TanStack Query
+
+---
+
+# Tech Stack
+- Next.js (App Router)
+- React
+- TypeScript
+- Framer Motion
+- CSS Modules
+- TanStack Query
+- DummyJSON API
+- Lucide React
+
+---
+
+# Project Architecture
+
+src/
+
+components/
+
+ui/
+
+feature/
+
+hooks/
+
+lib/
+
+providers/
+
+styles/
+
+types/
+
+The project separates reusable UI components from feature-specific components.
+
+Reusable components:
+- Card
+- Button
+- Badge
+- Heading
+- Section
+- AnimatedCounter
+
+Feature components:
+- Cloud Providers
+- Infrastructure
+- Optimization
+
+---
+
+# Design System
+The project uses design tokens instead of scattered hardcoded values.
+
+Examples include:
+
+- Colors
+- Radius
+- Shadows
+- Spacing
+- Typography
+- Container sizes
+
+This makes theming and future maintenance significantly easier.
+
+---
+
+# Animation Approach
+Animations are coordinated as a single storytelling sequence rather than independent effects.
+
+Animation timeline:
+
+1. Cloud providers appear
+2. Connection lines animate
+3. AI engine activates
+4. Metrics animate
+5. Counters count upward
+6. Optimization summary appears
+7. Success state is revealed
+
+Framer Motion is used throughout the application with reusable animation variants.
+
+The project also respects the user's `prefers-reduced-motion` setting.
+
+---
+
+# Data Fetching
+Data is fetched from the DummyJSON public API.
+
+Rather than displaying product information directly, the response is transformed into cloud infrastructure metrics such as:
+
+- CPU Usage
+- GPU Usage
+- RAM Usage
+- Monthly Savings
+
+This keeps UI components independent from the API structure.
+
+---
+
+# Caching Strategy
+TanStack Query handles:
+
+- Request caching
+- Background cache management
+- Retry logic
+- Loading states
+- Error handling
+
+This avoids unnecessary network requests while keeping the UI responsive.
+
+---
+
+# Accessibility
+Implemented accessibility improvements include:
+
+- Semantic HTML
+- Keyboard accessibility
+- Visible focus states
+- Reduced motion support
+- ARIA labels
+- Responsive typography
+
+---
+
+# Responsive Design
+The application is optimized for:
+
+- Desktop
+- Tablet
+- Mobile
+
+Responsive behavior uses modern CSS techniques including:
+
+- CSS Container Queries
+- clamp()
+- Logical Properties
+
+---
+
+# Tradeoffs
+To stay within the challenge time limit, I prioritized:
+
+- Animation quality
+- Component architecture
+- Performance
+- Accessibility
+
+instead of building a larger application.
+
+The project focuses on delivering one polished interactive feature rather than multiple unfinished sections.
+
+---
+
+# Future Improvements
+Given more time I would add:
+
+- Real cloud infrastructure data
+- Interactive network graph
+- Theme switcher
+- More advanced graph animations
+- Performance monitoring
+- Unit and integration tests
+
+---
+
+# Getting Started
+Install dependencies
+
+```bash
+npm install
+```
+
+Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Folder Structure
+```
+src/
+├── app/
+├── components/
+│   ├── feature/
+│   └── ui/
+├── hooks/
+├── lib/
+├── providers/
+├── styles/
+└── types/
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Self Evaluation 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Criteria | Weight | I Will Get |
+|----------|--------|-----------------|
+| **Code quality** | 25% | 25% |
+| **Animation craft** | 20% | 10% |
+| **Responsiveness** | 15% | 10% |
+| **Modern CSS & styling** | 15% | 15% |
+| **Data handling** | 15% | 15% |
+| **Product thinking & docs** | 10% | 10% |
 
-## Deploy on Vercel
+## Over all Score = 85%/100%
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Author
+Parveen Kumar
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Frontend Engineering Challenge Submission for Atomity
