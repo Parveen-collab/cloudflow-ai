@@ -4,47 +4,54 @@ import {
   Cpu,
   Database,
   HardDrive,
+  DollarSign,
 } from "lucide-react";
 
-import Stat from "@/src/app/components/ui/Stat";
-import AnimatedCounter from "@/src/app/components/ui/AnimatedCounter";
+import MetricCard from "./MetricCard";
 
 const metrics = [
   {
-    title: "CPU",
-    value: 72,
-    progress: 72,
     icon: <Cpu size={18} />,
+    label: "CPU",
+    value: 72,
+    suffix: "%",
+    progress: 72,
   },
   {
-    title: "GPU",
-    value: 41,
-    progress: 41,
     icon: <Database size={18} />,
+    label: "GPU",
+    value: 41,
+    suffix: "%",
+    progress: 41,
   },
   {
-    title: "RAM",
-    value: 68,
-    progress: 68,
     icon: <HardDrive size={18} />,
+    label: "RAM",
+    value: 68,
+    suffix: "%",
+    progress: 68,
+  },
+  {
+    icon: <DollarSign size={18} />,
+    label: "Savings",
+    value: 2874,
+    prefix: "$",
+    progress: 68,
   },
 ];
 
 export default function MetricsPanel() {
   return (
     <>
-      {metrics.map((metric) => (
-        <Stat
-          key={metric.title}
+      {metrics.map((metric, index) => (
+        <MetricCard
+          key={metric.label}
           icon={metric.icon}
-          title={metric.title}
-          value={
-            <AnimatedCounter
-              value={metric.value}
-              suffix="%"
-            />
-          }
+          label={metric.label}
+          value={metric.value}
+          suffix={metric.suffix}
           progress={metric.progress}
+          delay={index * 0.2}
         />
       ))}
     </>
