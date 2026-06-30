@@ -12,6 +12,10 @@
   gap: var(--space-grid);
 
   margin-block-start: var(--space-stack-xl);
+
+  list-style: none;
+  padding: 0;
+  margin-inline: 0;
 }
 
 @container providers (max-width: 560px) {

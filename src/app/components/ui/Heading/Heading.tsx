@@ -18,6 +18,7 @@ type HeadingLevel = "h1" | "h2" | "h3";
 type HeadingAlign = "left" | "center" | "right";
 
 export interface HeadingProps {
+  id?: string;
   eyebrow?: string;
   title: string;
   subtitle?: string;
@@ -35,6 +36,7 @@ const itemVariants = {
 };
 
 export default function Heading({
+  id,
   eyebrow,
   title,
   subtitle,
@@ -64,16 +66,16 @@ export default function Heading({
       viewport={viewport}
     >
       {eyebrow && (
-        <motion.span
+        <motion.p
           className={styles.eyebrow}
           variants={itemVariants}
         >
           {eyebrow}
-        </motion.span>
+        </motion.p>
       )}
 
       <motion.div variants={itemVariants}>
-        <TitleTag className={styles.title}>
+        <TitleTag id={id} className={styles.title}>
           {title}
         </TitleTag>
       </motion.div>

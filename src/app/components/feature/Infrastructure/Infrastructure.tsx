@@ -16,35 +16,33 @@ const providers = ["AWS", "Azure", "Google", "On-Prem"];
 
 export default function Infrastructure() {
   return (
-    <section
-      className={styles.section}
-      aria-labelledby="cloud-providers-heading"
-    >
+    <>
       <Heading
+        id="infrastructure-heading"
         eyebrow="Infrastructure Analysis"
         title="AI analyzes every connected workload"
         subtitle="Connections are mapped in real time before generating optimization recommendations."
         align="center"
       />
 
-      <div className={styles.visualization}>
+      <div
+        className={styles.visualization}
+        role="img"
+        aria-label="Diagram showing cloud providers connected to an AI engine, with infrastructure metrics on the right"
+      >
         <ScrollReveal
           className={styles.providers}
           direction="left"
         >
-          {providers.map((provider, index) => (
-            <ScrollReveal
-              key={provider}
-              delay={index * 0.08}
-              direction="left"
-            >
-              <div>{provider}</div>
-            </ScrollReveal>
-          ))}
+          <ul aria-label="Connected cloud providers">
+            {providers.map((provider) => (
+              <li key={provider}>{provider}</li>
+            ))}
+          </ul>
         </ScrollReveal>
 
         <ScaleReveal className={styles.engine}>
-          <Sparkles size={42} />
+          <Sparkles size={42} aria-hidden="true" />
           <span>AI Engine</span>
         </ScaleReveal>
 
@@ -58,6 +56,6 @@ export default function Infrastructure() {
 
         <ConnectionLine className={styles.connectionLines} />
       </div>
-    </section>
+    </>
   );
 }

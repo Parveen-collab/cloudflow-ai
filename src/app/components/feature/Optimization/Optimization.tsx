@@ -12,7 +12,6 @@ import Heading from "@/src/app/components/ui/Heading";
 import AnimatedCounter from "@/src/app/components/ui/AnimatedCounter";
 import {
   HoverLift,
-  ScaleReveal,
 } from "@/src/app/components/ui/motion";
 
 import { useReducedMotion } from "@/src/hooks/useReducedMotion";
@@ -23,65 +22,73 @@ export default function Optimization() {
   const reduced = useReducedMotion();
 
   return (
-    <section className={styles.section}>
+    <>
       <Heading
+        id="optimization-heading"
         eyebrow="Optimization Complete"
         title="Your infrastructure is now AI optimized"
         subtitle="The optimization engine analyzed every workload and generated cost-saving recommendations."
         align="center"
       />
 
-        <HoverLift>
-          <Card className={styles.card} hover>
-            {!reduced && (
-              <motion.div
-                className={styles.glow}
-                animate={{
-                  scale: [1, 1.12, 1],
-                  opacity: [0.45, 0.85, 0.45],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 2.4,
-                  ease: "easeInOut",
-                }}
-              />
-            )}
+      <HoverLift>
+        <Card
+          className={styles.card}
+          hover
+          aria-labelledby="optimization-result-heading"
+        >
+          {!reduced && (
+            <motion.div
+              className={styles.glow}
+              aria-hidden="true"
+              animate={{
+                scale: [1, 1.12, 1],
+                opacity: [0.45, 0.85, 0.45],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 2.4,
+                ease: "easeInOut",
+              }}
+            />
+          )}
 
-            <div className={styles.icon}>
-              <CheckCircle2 size={46} />
-            </div>
+          <div className={styles.icon} aria-hidden="true">
+            <CheckCircle2 size={46} />
+          </div>
 
-            <Badge variant="success">
-              <Sparkles size={14} />
-              AI Optimized
-            </Badge>
+          <Badge variant="success">
+            <Sparkles size={14} aria-hidden="true" />
+            AI Optimized
+          </Badge>
 
-            <div className={styles.savings}>
-              <AnimatedCounter
-                value={68}
-                suffix="%"
-              />
-            </div>
+          <div className={styles.savings}>
+            <AnimatedCounter
+              value={68}
+              suffix="%"
+            />
+          </div>
 
-            <h3>Monthly Cost Reduction</h3>
+          <h3 id="optimization-result-heading">
+            Monthly Cost Reduction
+          </h3>
 
-            <p>
-              Estimated Monthly Savings
-            </p>
+          <p>
+            Estimated Monthly Savings
+          </p>
 
-            <div className={styles.money}>
-              <AnimatedCounter
-                value={2874}
-                prefix="$"
-              />
-            </div>
+          <div className={styles.money}>
+            <AnimatedCounter
+              value={2874}
+              prefix="$"
+            />
+          </div>
 
-            <div className={styles.footer}>
-              Optimization completed in 2.4s
-            </div>
-          </Card>
-        </HoverLift>
-    </section>
+          <p className={styles.footer}>
+            Optimization completed in 2.4s
+          </p>
+        </Card>
+      </HoverLift>
+    </>
   );
 }

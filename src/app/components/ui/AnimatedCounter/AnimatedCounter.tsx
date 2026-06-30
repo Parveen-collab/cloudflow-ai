@@ -60,11 +60,21 @@ const AnimatedCounter = ({
     return controls.stop;
   }, [count, duration, isInView, reduced, value]);
 
+  const formattedValue = `${prefix}${value.toLocaleString(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  })}${suffix}`;
+
   return (
-    <motion.span ref={ref}>
-      {prefix}
-      <motion.span>{rounded}</motion.span>
-      {suffix}
+    <motion.span
+      ref={ref}
+      aria-label={formattedValue}
+    >
+      <span aria-hidden="true">
+        {prefix}
+        <motion.span>{rounded}</motion.span>
+        {suffix}
+      </span>
     </motion.span>
   );
 };

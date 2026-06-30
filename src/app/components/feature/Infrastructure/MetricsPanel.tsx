@@ -42,7 +42,7 @@ const metrics = [
 
 export default function MetricsPanel() {
   return (
-    <>
+    <section aria-label="Infrastructure metrics">
       {metrics.map((metric, index) => (
         <MetricCard
           key={metric.label}
@@ -55,6 +55,6 @@ export default function MetricsPanel() {
           delay={index * 0.12}
         />
       ))}
-    </>
+    </section>
   );
 }

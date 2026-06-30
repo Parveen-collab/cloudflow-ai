@@ -15,35 +15,43 @@ export default function CloudProviders() {
     isError,
   } = useCloudMetrics();
 
-  if (isLoading)
-    return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <p role="status" aria-live="polite" aria-busy="true">
+        Loading cloud providers…
+      </p>
+    );
+  }
 
-  if (isError)
-    return <p>Error loading providers.</p>;
+  if (isError) {
+    return (
+      <p role="alert">
+        Error loading providers.
+      </p>
+    );
+  }
 
   return (
-    <section>
-
+    <>
       <Heading
+        id="cloud-providers-heading"
         eyebrow="Cloud Providers"
         title="Connect Every Infrastructure"
         subtitle="Monitor and optimize workloads across multiple cloud platforms."
         align="center"
       />
 
-      <div className={styles.grid}>
-
+      <ul className={styles.grid}>
         {data?.map((provider, index) => (
-          <ProviderCard
-            key={provider.id}
-            provider={provider.provider}
-            clusters={provider.clusters}
-            index={index}
-          />
+          <li key={provider.id}>
+            <ProviderCard
+              provider={provider.provider}
+              clusters={provider.clusters}
+              index={index}
+            />
+          </li>
         ))}
-
-      </div>
-
-    </section>
+      </ul>
+    </>
   );
 }

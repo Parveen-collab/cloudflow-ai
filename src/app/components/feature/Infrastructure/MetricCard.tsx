@@ -40,9 +40,13 @@ export default function MetricCard({
     ? reducedMotionVariants
     : fadeRight;
 
+  const labelId = `metric-${label.toLowerCase()}-label`;
+  const progressLabel = `${label} utilization: ${value}${suffix}`;
+
   return (
-    <motion.div
+    <motion.article
       className={styles.card}
+      aria-labelledby={labelId}
       variants={variants}
       initial={reveal.initial}
       whileInView={reveal.whileInView}
@@ -54,8 +58,8 @@ export default function MetricCard({
     >
       <header className={styles.header}>
         <div className={styles.label}>
-          {icon}
-          <span>{label}</span>
+          <span aria-hidden="true">{icon}</span>
+          <span id={labelId}>{label}</span>
         </div>
 
         <div className={styles.value}>
@@ -67,9 +71,17 @@ export default function MetricCard({
         </div>
       </header>
 
-      <div className={styles.track}>
+      <div
+        className={styles.track}
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={progressLabel}
+      >
         <motion.div
           className={styles.fill}
+          aria-hidden="true"
           initial={{ width: reduced ? `${progress}%` : 0 }}
           whileInView={{ width: `${progress}%` }}
           viewport={viewport}
@@ -80,6 +92,6 @@ export default function MetricCard({
           }}
         />
       </div>
-    </motion.div>
+    </motion.article>
   );
 }

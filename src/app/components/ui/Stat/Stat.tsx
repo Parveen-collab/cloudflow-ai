@@ -39,9 +39,17 @@ const Stat = ({
       </div>
 
       {typeof progress === "number" && (
-        <div className={styles.progress}>
+        <div
+          className={styles.progress}
+          role="progressbar"
+          aria-valuenow={progress}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`${title}: ${progress}%`}
+        >
           <div
             className={styles.fill}
+            aria-hidden="true"
             style={{
               width: `${progress}%`,
             }}

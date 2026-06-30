@@ -44,9 +44,17 @@ const Button = ({
     <button
       className={classes}
       disabled={disabled || loading}
+      aria-busy={loading || undefined}
       {...props}
     >
-      {loading ? "Loading..." : children}
+      {loading ? (
+        <>
+          <span className="sr-only">Loading</span>
+          <span aria-hidden="true">Loading...</span>
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 };

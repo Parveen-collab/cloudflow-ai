@@ -20,15 +20,21 @@ export default function ProviderCard({
   clusters,
   index,
 }: ProviderCardProps) {
+  const titleId = `provider-${provider.toLowerCase().replace(/\s+/g, "-")}-title`;
+
   return (
     <ScrollReveal delay={index * 0.12}>
       <HoverLift>
-        <Card hover className={styles.card}>
-          <div className={styles.icon}>
+        <Card
+          hover
+          className={styles.card}
+          aria-labelledby={titleId}
+        >
+          <div className={styles.icon} aria-hidden="true">
             ☁
           </div>
 
-          <h3>{provider}</h3>
+          <h3 id={titleId}>{provider}</h3>
 
           <p>{clusters} Active Clusters</p>
 

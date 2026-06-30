@@ -6,18 +6,27 @@ import Optimization from "@/src/app/components/feature/Optimization";
 
 export default function Home() {
   return (
-    <>
-      <Section>
+    <main id="main-content">
+      <Section
+        id="cloud-providers"
+        aria-labelledby="cloud-providers-heading"
+      >
         <CloudProviders />
       </Section>
 
-      <Section>
+      <Section
+        id="infrastructure"
+        aria-labelledby="infrastructure-heading"
+      >
         <Infrastructure />
       </Section>
 
-      <Section>
+      <Section
+        id="optimization"
+        aria-labelledby="optimization-heading"
+      >
         <Optimization />
       </Section>
-    </>
+    </main>
   );
 }

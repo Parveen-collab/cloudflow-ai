@@ -27,7 +27,19 @@
   gap: clamp(1rem, 2.5vw, 2rem);
 }
 
-.providers div {
+.providers ul {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: clamp(1rem, 2.5vw, 2rem);
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.providers li {
   padding-block: 0.875rem;
   padding-inline: 1rem;
 
@@ -100,13 +112,13 @@
     gap: var(--space-stack-lg);
   }
 
-  .providers {
+  .providers ul {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .providers div {
+  .providers li {
     flex: 1 1 calc(50% - var(--space-grid));
     min-inline-size: 7rem;
   }
@@ -129,7 +141,7 @@
     margin-block-start: var(--space-stack-lg);
   }
 
-  .providers div {
+  .providers li {
     flex: 1 1 100%;
   }
 }
@@ -140,7 +152,7 @@
     grid-template-rows: auto auto;
   }
 
-  .providers {
+  .providers ul {
     grid-column: 1 / -1;
     flex-direction: row;
     flex-wrap: wrap;
