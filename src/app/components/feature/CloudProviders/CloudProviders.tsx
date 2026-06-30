@@ -6,7 +6,7 @@ import Heading from "@/src/app/components/ui/Heading";
 
 import ProviderCard from "./ProviderCard";
 
-import { useCloudMetrics } from "@/src/app/hooks/useCloudMetrics";
+import { useCloudMetrics } from "@/src/hooks/useCloudMetrics";
 
 export default function CloudProviders() {
   const {

@@ -1,5 +1,5 @@
-import { CloudMetric } from "@/src/app/types/cloud";
-import { DummyProduct } from "@/src/app/types/api";
+import { CloudMetric } from "@/src/types/cloud";
+import { DummyProduct } from "@/src/types/api";
 
 const providers = [
   "AWS",

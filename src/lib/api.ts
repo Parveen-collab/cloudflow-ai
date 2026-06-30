@@ -1,4 +1,4 @@
-import { DummyProductsResponse } from "@/src/app/types/api";
+import { DummyProductsResponse } from "@/src/types/api";
 
 const BASE_URL = "https://dummyjson.com";
 
