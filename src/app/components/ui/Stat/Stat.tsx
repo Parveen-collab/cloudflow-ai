@@ -3,8 +3,7 @@ import styles from "./Stat.module.css";
 
 export interface StatProps {
   title: string;
-  value: string | number;
-  suffix?: string;
+  value: React.ReactNode;
   description?: string;
   progress?: number;
   icon?: React.ReactNode;
@@ -14,7 +13,6 @@ export interface StatProps {
 const Stat = ({
   title,
   value,
-  suffix = "",
   description,
   progress,
   icon,
@@ -35,10 +33,9 @@ const Stat = ({
           </span>
         </div>
 
-        <span className={styles.value}>
+        <div className={styles.value}>
           {value}
-          {suffix}
-        </span>
+        </div>
       </div>
 
       {typeof progress === "number" && (

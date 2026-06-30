@@ -1,48 +1,68 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import Section from "@/src/app/components/ui/Section";
+import Heading from "@/src/app/components/ui/Heading";
+import Stat from "@/src/app/components/ui/Stat";
+import AnimatedCounter from "@/src/app/components/ui/AnimatedCounter";
 
-async function fetchPosts() {
-  const response = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?_limit=5"
-  );
+import { Cpu } from "lucide-react";
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch");
-  }
-
-  return response.json();
-}
+import { useCloudMetrics } from "@/src/app/hooks/useCloudMetrics";
 
 export default function Home() {
   const {
     data,
     isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["posts"],
-    queryFn: fetchPosts,
-  });
+    isError,
+  } = useCloudMetrics();
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error instanceof Error) {
-    return <p>{error.message}</p>;
+  if (isError) {
+    return <p>Something went wrong.</p>;
   }
 
   return (
-    <main
-      style={{
-        padding: 40,
-      }}
-    >
-      <h1>TanStack Query Working ✅</h1>
+    <Section>
 
-      {data?.map((post: any) => (
-        <p key={post.id}>{post.title}</p>
-      ))}
-    </main>
+      <Heading
+        eyebrow="Live Metrics"
+        title="Cloud Infrastructure"
+        subtitle="Fetched from DummyJSON and mapped into cloud metrics."
+        level="h1"
+        align="center"
+      />
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fit,minmax(260px,1fr))",
+          gap: "24px",
+          marginTop: "48px",
+        }}
+      >
+
+        {data?.map((metric) => (
+          <Stat
+            key={metric.id}
+            icon={<Cpu size={20} />}
+            title={metric.provider}
+            value={
+              <AnimatedCounter
+                value={metric.cpu}
+                suffix="%"
+              />
+            }
+            progress={metric.cpu}
+            description={`${metric.clusters} Clusters`}
+          />
+        ))}
+
+      </div>
+
+    </Section>
   );
 }
