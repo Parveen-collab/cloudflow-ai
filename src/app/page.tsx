@@ -1,10 +1,13 @@
+import { colors, typography, shadows, spacing } from "@/src/app/tokens";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main>
-        CloudFlow AI
-      </main>
+    <div
+      style={{
+        padding: spacing.xl,
+      }}
+    >
+      Padding Test
     </div>
   );
 }
