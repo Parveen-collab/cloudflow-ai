@@ -1,0 +1,13 @@
+.section {
+  inline-size: 100%;
+
+  padding-block: clamp(4rem, 8vw, 8rem);
+
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.container {
+  inline-size: min(100%, 1280px);
+
+  margin-inline: auto;
+}

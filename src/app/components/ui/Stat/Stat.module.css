@@ -1,0 +1,119 @@
+.stat {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  padding: 1.25rem;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow-md);
+
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 25%,
+    var(--color-border)
+  );
+}
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.titleWrapper {
+  display: flex;
+
+  align-items: center;
+
+  gap: .6rem;
+}
+
+.icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: var(--color-primary);
+}
+
+.title {
+  color: var(--color-text-secondary);
+
+  font-size: .9rem;
+
+  font-weight: 500;
+}
+
+.value {
+  font-size: clamp(1.5rem,3vw,2rem);
+
+  font-weight: 700;
+
+  color: var(--color-text-primary);
+
+  line-height: 1;
+}
+
+.progress {
+  inline-size: 100%;
+
+  block-size: 8px;
+
+  overflow: hidden;
+
+  background: var(--color-border);
+
+  border-radius: var(--radius-full);
+}
+
+.fill {
+  block-size: 100%;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+      90deg,
+      var(--color-primary),
+      color-mix(
+        in srgb,
+        var(--color-primary) 70%,
+        white
+      )
+  );
+
+  transition: width 800ms ease;
+}
+
+.description {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: .85rem;
+
+  line-height: 1.6;
+}
