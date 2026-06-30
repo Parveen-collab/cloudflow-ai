@@ -1,35 +1,48 @@
-import Card from "@/src/app/components/ui/Card";
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+
+async function fetchPosts() {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/posts?_limit=5"
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch");
+  }
+
+  return response.json();
+}
 
 export default function Home() {
+  const {
+    data,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchPosts,
+  });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error instanceof Error) {
+    return <p>{error.message}</p>;
+  }
+
   return (
     <main
       style={{
-        minHeight: "100vh",
-        padding: "4rem",
-        background: "var(--color-background)",
-        display: "grid",
-        gap: "2rem",
+        padding: 40,
       }}
     >
-      <Card hover>
-        <h2>AWS</h2>
-        <p>12 Clusters</p>
-      </Card>
+      <h1>TanStack Query Working ✅</h1>
 
-      <Card variant="elevated" hover>
-        <h2>Azure</h2>
-        <p>8 Subscriptions</p>
-      </Card>
-
-      <Card variant="outline">
-        <h2>Google Cloud</h2>
-        <p>24 Projects</p>
-      </Card>
-
-      <Card variant="glass" hover>
-        <h2>On-Prem</h2>
-        <p>6 Nodes</p>
-      </Card>
+      {data?.map((post: any) => (
+        <p key={post.id}>{post.title}</p>
+      ))}
     </main>
   );
 }
