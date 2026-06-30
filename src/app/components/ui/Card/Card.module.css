@@ -56,15 +56,18 @@
 }
 
 .padding-sm {
-  padding: 12px;
+  padding-block: clamp(0.625rem, 2vw, 0.75rem);
+  padding-inline: clamp(0.625rem, 2vw, 0.75rem);
 }
 
 .padding-md {
-  padding: 20px;
+  padding-block: clamp(1rem, 2.5vw, 1.25rem);
+  padding-inline: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 .padding-lg {
-  padding: 32px;
+  padding-block: clamp(1.5rem, 3vw, 2rem);
+  padding-inline: clamp(1.5rem, 3vw, 2rem);
 }
 
 /* =========================

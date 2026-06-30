@@ -53,7 +53,7 @@ export default function Infrastructure() {
           <MetricsPanel />
         </ScrollReveal>
 
-        <ConnectionLine />
+        <ConnectionLine className={styles.connectionLines} />
       </div>
     </section>
   );

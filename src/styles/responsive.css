@@ -1,0 +1,33 @@
+:root {
+  /* Breakpoint reference values */
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1280px;
+
+  /* Fluid spacing */
+  --space-section-block: clamp(3rem, 8vw, 6rem);
+  --space-section-inline: clamp(1rem, 4vw, 2.5rem);
+  --space-stack-xl: clamp(2.5rem, 6vw, 4rem);
+  --space-stack-lg: clamp(2rem, 5vw, 3rem);
+  --space-grid: clamp(1rem, 2.5vw, 1.5rem);
+  --space-card: clamp(1rem, 2vw, 1.25rem);
+  --space-card-lg: clamp(1.5rem, 3vw, 2rem);
+
+  /* Fluid typography */
+  --font-size-hero: clamp(3rem, 6vw, 5rem);
+  --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+  --font-size-h2: clamp(1.75rem, 4vw, 3rem);
+  --font-size-h3: clamp(1.25rem, 3vw, 2rem);
+  --font-size-body: clamp(0.9375rem, 1.5vw, 1rem);
+  --font-size-body-lg: clamp(1rem, 2vw, 1.25rem);
+  --font-size-stat: clamp(1.5rem, 3vw, 2rem);
+  --font-size-savings: clamp(2.5rem, 8vw, 5rem);
+  --font-size-money: clamp(1.5rem, 4vw, 2rem);
+  --font-size-eyebrow: clamp(0.7rem, 1.2vw, 0.8rem);
+
+  /* Fluid component sizing */
+  --size-engine: clamp(140px, 20vw, 180px);
+  --size-icon-lg: clamp(72px, 12vw, 90px);
+  --size-glow: clamp(220px, 40vw, 300px);
+  --container-max: 1280px;
+}

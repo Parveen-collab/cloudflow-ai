@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@/src/styles/responsive.css";
 import "@/src/styles/theme.css";
 
 import QueryProvider from "@/src/providers/QueryProvider";

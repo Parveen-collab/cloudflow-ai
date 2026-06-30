@@ -13,7 +13,13 @@ import {
 
 const LINE_POSITIONS = [80, 150, 230, 310] as const;
 
-export default function ConnectionLine() {
+export interface ConnectionLineProps {
+  className?: string;
+}
+
+export default function ConnectionLine({
+  className,
+}: ConnectionLineProps) {
   const reduced = useReducedMotion();
   const reveal = scrollReveal(reduced);
   const variants = reduced
@@ -22,16 +28,10 @@ export default function ConnectionLine() {
 
   return (
     <svg
+      className={className}
       viewBox="0 0 800 400"
       preserveAspectRatio="none"
       aria-hidden="true"
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-      }}
     >
       {LINE_POSITIONS.map((y, index) => (
         <motion.line
