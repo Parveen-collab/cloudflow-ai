@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   animate,
   motion,
+  useInView,
   useMotionValue,
   useTransform,
 } from "framer-motion";
+
+import { useReducedMotion } from "@/src/hooks/useReducedMotion";
+import { transitions, viewport } from "@/src/lib/motion";
 
 export interface AnimatedCounterProps {
   value: number;
@@ -18,12 +22,16 @@ export interface AnimatedCounterProps {
 
 const AnimatedCounter = ({
   value,
-  duration = 1.5,
+  duration = transitions.counter.duration,
   prefix = "",
   suffix = "",
   decimals = 0,
 }: AnimatedCounterProps) => {
-  const count = useMotionValue(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const reduced = useReducedMotion();
+  const isInView = useInView(ref, viewport);
+  const count = useMotionValue(reduced ? value : 0);
+  const hasAnimated = useRef(false);
 
   const rounded = useTransform(count, (latest) =>
     latest.toLocaleString(undefined, {
@@ -33,16 +41,27 @@ const AnimatedCounter = ({
   );
 
   useEffect(() => {
+    if (reduced) {
+      count.set(value);
+      return;
+    }
+
+    if (!isInView || hasAnimated.current) {
+      return;
+    }
+
+    hasAnimated.current = true;
+
     const controls = animate(count, value, {
       duration,
-      ease: "easeOut",
+      ease: transitions.counter.ease,
     });
 
     return controls.stop;
-  }, [count, value, duration]);
+  }, [count, duration, isInView, reduced, value]);
 
   return (
-    <motion.span>
+    <motion.span ref={ref}>
       {prefix}
       <motion.span>{rounded}</motion.span>
       {suffix}

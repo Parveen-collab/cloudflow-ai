@@ -1,4 +1,17 @@
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
+
+import { useReducedMotion } from "@/src/hooks/useReducedMotion";
+import {
+  fadeUp,
+  reducedMotionVariants,
+  scrollReveal,
+  staggerContainer,
+  transitions,
+  viewport,
+} from "@/src/lib/motion";
+
 import styles from "./Heading.module.css";
 
 type HeadingLevel = "h1" | "h2" | "h3";
@@ -13,18 +26,31 @@ export interface HeadingProps {
   className?: string;
 }
 
-const Heading = ({
+const itemVariants = {
+  hidden: fadeUp.hidden,
+  visible: {
+    ...fadeUp.visible,
+    transition: transitions.fade,
+  },
+};
+
+export default function Heading({
   eyebrow,
   title,
   subtitle,
   level = "h2",
   align = "left",
   className = "",
-}: HeadingProps) => {
+}: HeadingProps) {
+  const reduced = useReducedMotion();
+  const reveal = scrollReveal(reduced);
   const TitleTag = level;
+  const containerVariants = reduced
+    ? reducedMotionVariants
+    : staggerContainer;
 
   return (
-    <header
+    <motion.header
       className={[
         styles.heading,
         styles[align],
@@ -32,24 +58,34 @@ const Heading = ({
       ]
         .filter(Boolean)
         .join(" ")}
+      variants={containerVariants}
+      initial={reveal.initial}
+      whileInView={reveal.whileInView}
+      viewport={viewport}
     >
       {eyebrow && (
-        <span className={styles.eyebrow}>
+        <motion.span
+          className={styles.eyebrow}
+          variants={itemVariants}
+        >
           {eyebrow}
-        </span>
+        </motion.span>
       )}
 
-      <TitleTag className={styles.title}>
-        {title}
-      </TitleTag>
+      <motion.div variants={itemVariants}>
+        <TitleTag className={styles.title}>
+          {title}
+        </TitleTag>
+      </motion.div>
 
       {subtitle && (
-        <p className={styles.subtitle}>
+        <motion.p
+          className={styles.subtitle}
+          variants={itemVariants}
+        >
           {subtitle}
-        </p>
+        </motion.p>
       )}
-    </header>
+    </motion.header>
   );
-};
-
-export default Heading;
+}

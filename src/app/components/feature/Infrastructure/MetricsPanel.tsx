@@ -49,9 +49,10 @@ export default function MetricsPanel() {
           icon={metric.icon}
           label={metric.label}
           value={metric.value}
+          prefix={metric.prefix}
           suffix={metric.suffix}
           progress={metric.progress}
-          delay={index * 0.2}
+          delay={index * 0.12}
         />
       ))}
     </>

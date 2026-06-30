@@ -82,3 +82,11 @@
     var(--color-border)
   );
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .hover:hover {
+    transform: none;
+    transition: none;
+  }
+}
