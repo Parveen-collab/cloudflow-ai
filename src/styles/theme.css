@@ -21,6 +21,12 @@
   --color-warning: #f59e0b;
   --color-error: #ef4444;
 
+  --color-glow: color-mix(
+    in srgb,
+    var(--color-primary) 18%,
+    transparent
+  );
+
   /* ===============================
      SHADOWS
   =============================== */

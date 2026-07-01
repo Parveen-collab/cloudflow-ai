@@ -3,33 +3,18 @@
 import styles from "./CloudProviders.module.css";
 
 import Heading from "@/src/app/components/ui/Heading";
+import DataState from "@/src/app/components/ui/DataState";
+import {
+  StaggerItem,
+  StaggerReveal,
+} from "@/src/app/components/ui/motion";
 
 import ProviderCard from "./ProviderCard";
 
 import { useCloudMetrics } from "@/src/hooks/useCloudMetrics";
 
 export default function CloudProviders() {
-  const {
-    data,
-    isLoading,
-    isError,
-  } = useCloudMetrics();
-
-  if (isLoading) {
-    return (
-      <p role="status" aria-live="polite" aria-busy="true">
-        Loading cloud providers…
-      </p>
-    );
-  }
-
-  if (isError) {
-    return (
-      <p role="alert">
-        Error loading providers.
-      </p>
-    );
-  }
+  const { data, isLoading, isError } = useCloudMetrics();
 
   return (
     <>
@@ -41,17 +26,23 @@ export default function CloudProviders() {
         align="center"
       />
 
-      <ul className={styles.grid}>
-        {data?.map((provider, index) => (
-          <li key={provider.id}>
-            <ProviderCard
-              provider={provider.provider}
-              clusters={provider.clusters}
-              index={index}
-            />
-          </li>
-        ))}
-      </ul>
+      <DataState
+        isLoading={isLoading}
+        isError={isError}
+        loadingLabel="Loading cloud providers…"
+        errorLabel="Error loading providers."
+      >
+        <StaggerReveal className={styles.grid}>
+          {data?.map((provider) => (
+            <StaggerItem key={provider.id}>
+              <ProviderCard
+                provider={provider.provider}
+                clusters={provider.clusters}
+              />
+            </StaggerItem>
+          ))}
+        </StaggerReveal>
+      </DataState>
     </>
   );
 }

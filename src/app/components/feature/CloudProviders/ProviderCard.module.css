@@ -24,9 +24,9 @@
   transform: scale(1.1);
 }
 
-.card h3 {
+.card:has(.icon) h3 {
   margin: 0;
-
+  margin-block-start: 0.25rem;
   font-size: var(--font-size-h3);
 }
 
@@ -47,7 +47,7 @@
 
   background: radial-gradient(
     circle at top,
-    rgba(74, 222, 128, 0.18),
+    var(--color-glow),
     transparent 70%
   );
 

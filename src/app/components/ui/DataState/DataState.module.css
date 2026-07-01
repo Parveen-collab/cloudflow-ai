@@ -1,0 +1,76 @@
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-card);
+
+  padding-block: var(--space-stack-lg);
+  padding-inline: var(--space-section-inline);
+
+  text-align: center;
+}
+
+.label {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body);
+}
+
+.error {
+  margin: 0;
+
+  color: var(--color-error);
+  font-size: var(--font-size-body-lg);
+  font-weight: 600;
+}
+
+.skeletonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  inline-size: min(100%, 320px);
+}
+
+.skeleton {
+  display: block;
+
+  block-size: 1rem;
+  inline-size: 100%;
+
+  border-radius: var(--radius-sm);
+
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-alt) 0%,
+    color-mix(in srgb, var(--color-border) 60%, var(--color-surface-alt)) 50%,
+    var(--color-surface-alt) 100%
+  );
+
+  background-size: 200% 100%;
+
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonShort {
+  inline-size: 65%;
+  margin-inline: auto;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
