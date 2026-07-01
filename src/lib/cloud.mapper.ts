@@ -8,6 +8,8 @@ const providers = [
   "Oracle",
   "IBM",
   "On-Prem",
+  "Huawei",
+  "Tencent",
 ];
 
 export interface AggregatedCloudMetrics {
@@ -92,7 +94,7 @@ export function aggregateCloudMetrics(
     totalSavings,
     savingsPercent,
     connectedProviders: metrics
-      .slice(0, 4)
+      .slice(0, 8)
       .map((metric) => metric.provider),
     optimizationTimeSeconds: Number(
       (1.8 + count * 0.1).toFixed(1)
