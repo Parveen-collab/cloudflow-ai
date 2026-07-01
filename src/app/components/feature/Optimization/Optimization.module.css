@@ -42,7 +42,7 @@
 
   background: radial-gradient(
     circle,
-    rgba(74, 222, 128, 0.18),
+    var(--color-glow),
     transparent 70%
   );
 

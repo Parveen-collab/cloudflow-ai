@@ -3,44 +3,55 @@
 import {
   Cpu,
   Database,
-  HardDrive,
   DollarSign,
+  HardDrive,
 } from "lucide-react";
+
+import { useCloudMetrics } from "@/src/hooks/useCloudMetrics";
+import { aggregateCloudMetrics } from "@/src/lib/cloud.mapper";
 
 import MetricCard from "./MetricCard";
 
-const metrics = [
-  {
-    icon: <Cpu size={18} />,
-    label: "CPU",
-    value: 72,
-    suffix: "%",
-    progress: 72,
-  },
-  {
-    icon: <Database size={18} />,
-    label: "GPU",
-    value: 41,
-    suffix: "%",
-    progress: 41,
-  },
-  {
-    icon: <HardDrive size={18} />,
-    label: "RAM",
-    value: 68,
-    suffix: "%",
-    progress: 68,
-  },
-  {
-    icon: <DollarSign size={18} />,
-    label: "Savings",
-    value: 2874,
-    prefix: "$",
-    progress: 68,
-  },
-];
-
 export default function MetricsPanel() {
+  const { data } = useCloudMetrics();
+
+  if (!data) {
+    return null;
+  }
+
+  const aggregated = aggregateCloudMetrics(data);
+
+  const metrics = [
+    {
+      icon: <Cpu size={18} />,
+      label: "CPU",
+      value: aggregated.cpu,
+      suffix: "%",
+      progress: aggregated.cpu,
+    },
+    {
+      icon: <Database size={18} />,
+      label: "GPU",
+      value: aggregated.gpu,
+      suffix: "%",
+      progress: aggregated.gpu,
+    },
+    {
+      icon: <HardDrive size={18} />,
+      label: "RAM",
+      value: aggregated.ram,
+      suffix: "%",
+      progress: aggregated.ram,
+    },
+    {
+      icon: <DollarSign size={18} />,
+      label: "Savings",
+      value: aggregated.totalSavings,
+      prefix: "$",
+      progress: aggregated.savingsPercent,
+    },
+  ];
+
   return (
     <section aria-label="Infrastructure metrics">
       {metrics.map((metric, index) => (

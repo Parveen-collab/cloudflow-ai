@@ -4,6 +4,7 @@ import "@/src/styles/theme.css";
 import "@/src/styles/accessibility.css";
 
 import QueryProvider from "@/src/providers/QueryProvider";
+import ThemeToggle from "@/src/app/components/ui/ThemeToggle";
 
 export default function RootLayout({
   children,
@@ -16,6 +17,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <ThemeToggle />
         <QueryProvider>
           {children}
         </QueryProvider>
