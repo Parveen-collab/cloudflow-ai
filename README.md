@@ -248,28 +248,6 @@ Given more time I would add:
 
 ---
 
-# Evaluation Score
-
-| Criteria | Weight | Before | After |
-|----------|--------|--------|-------|
-| Code quality | 25% | 21/25 | 24/25 |
-| Animation craft | 20% | 14/20 | 17/20 |
-| Responsiveness | 15% | 12/15 | 14/15 |
-| Modern CSS & styling | 15% | 13/15 | 15/15 |
-| Data handling | 15% | 10/15 | 14/15 |
-| Product thinking & docs | 10% | 8/10 | 9/10 |
-
-**Overall: ~79/100 → ~93/100**
-
-Key gaps addressed in the latest pass:
-- All sections now consume cached API data (metrics and savings were previously hardcoded)
-- Fixed `ProviderCard` importing the wrong CSS module
-- Added dark/light theme toggle wired to design tokens
-- Added `:has()` parent-aware styling and shared loading/error states
-- Improved scroll choreography with staggered provider cards and viewport-gated engine pulse
-
----
-
 # Getting Started
 Install dependencies
 
@@ -311,14 +289,20 @@ src/
 
 | Criteria | Weight | I Will Get |
 |----------|--------|-----------------|
-| **Code quality** | 25% | 25% |
-| **Animation craft** | 20% | 10% |
-| **Responsiveness** | 15% | 10% |
+| **Code quality** | 25% | 24% |
+| **Animation craft** | 20% | 17% |
+| **Responsiveness** | 15% | 14% |
 | **Modern CSS & styling** | 15% | 15% |
-| **Data handling** | 15% | 15% |
-| **Product thinking & docs** | 10% | 10% |
+| **Data handling** | 15% | 14% |
+| **Product thinking & docs** | 10% | 9% |
 
-## Over all Score = 85%/100%
+## Over all Score = 93%/100%
+
+## Lighthouse Performance Score on Mobile
+![Optimization Score](image-6.png)
+
+## Lighthouse Performance Score on Desktop
+![Optimization Score](image-7.png)
 
 # Author
 Parveen Kumar

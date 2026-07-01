@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
-import { useInView } from "framer-motion";
 
 import Heading from "@/src/app/components/ui/Heading";
 import DataState from "@/src/app/components/ui/DataState";
@@ -19,6 +19,17 @@ import { transitions, viewport } from "@/src/lib/motion";
 import styles from "./Infrastructure.module.css";
 import MetricsPanel from "@/src/app/components/feature/Infrastructure/MetricsPanel";
 import ConnectionLine from "@/src/app/components/feature/Infrastructure/ConnectionLine";
+
+const providerLogos: Record<string, string> = {
+  AWS: "/providers/aws.webp",
+  Azure: "/providers/azure.webp",
+  "Google Cloud": "/providers/google-cloud.png",
+  Oracle: "/providers/oracle.webp",
+  IBM: "/providers/ibm.webp",
+  "On-Prem": "/providers/on-prem.svg",
+  Huawei: "/providers/huawei.webp",
+  Tencent: "/providers/tencent.webp",
+};
 
 export default function Infrastructure() {
   const engineRef = useRef<HTMLDivElement>(null);
@@ -69,7 +80,24 @@ export default function Infrastructure() {
                     delay: index * 0.1,
                   }}
                 >
-                  {provider}
+                  <div className={styles.providerItem}>
+                    <Image
+                      src={
+                        providerLogos[provider] ??
+                        "/providers/default.webp"
+                      }
+                      alt=""
+                      width={24}
+                      height={24}
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        objectFit: "contain",
+                      }}
+                    />
+
+                    <span>{provider}</span>
+                  </div>
                 </motion.li>
               ))}
             </ul>

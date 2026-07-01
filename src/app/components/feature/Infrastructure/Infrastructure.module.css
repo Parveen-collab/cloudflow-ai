@@ -24,6 +24,22 @@
   inline-size: 100%;
 }
 
+.providerItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.providerItem span {
+  flex: 1;
+}
+
+.providerItem img {
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
 .engine {
   grid-area: engine;
 
