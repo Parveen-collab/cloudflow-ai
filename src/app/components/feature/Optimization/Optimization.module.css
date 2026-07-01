@@ -4,10 +4,16 @@
 
 .wrapper {
   display: flex;
-
   justify-content: center;
 
+  inline-size: 100%;
+
   margin-block-start: var(--space-stack-xl);
+}
+
+.cardOuter {
+  inline-size: 100%;
+  max-inline-size: min(100%, 480px);
 }
 
 .card {
@@ -27,7 +33,7 @@
   padding-block: clamp(2rem, 6vw, 3rem);
   padding-inline: clamp(1.25rem, 5vw, 3rem);
 
-  inline-size: min(100%, 480px);
+  inline-size: 100%;
 
   text-align: center;
 }
@@ -114,7 +120,7 @@
 }
 
 @media (min-width: 1280px) {
-  .card {
-    inline-size: min(100%, 520px);
+  .cardOuter {
+    max-inline-size: min(100%, 520px);
   }
 }

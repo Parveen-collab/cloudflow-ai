@@ -17,6 +17,7 @@ export default function HoverLift({
   children,
   disabled = false,
   className,
+  style,
   ...props
 }: HoverLiftProps) {
   const reduced = useReducedMotion();
@@ -30,6 +31,7 @@ export default function HoverLift({
       whileTap={
         reduced || disabled ? undefined : hoverTap
       }
+      style={{ minInlineSize: 0, ...style }}
       {...props}
     >
       {children}
