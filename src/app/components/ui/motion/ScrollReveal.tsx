@@ -40,6 +40,7 @@ export default function ScrollReveal({
   delay = 0,
   direction = "up",
   className,
+  style,
   ...props
 }: ScrollRevealProps) {
   const reduced = useReducedMotion();
@@ -51,6 +52,7 @@ export default function ScrollReveal({
   return (
     <motion.div
       className={className}
+      style={{ minInlineSize: 0, ...style }}
       variants={variants}
       initial={reveal.initial}
       whileInView={reveal.whileInView}

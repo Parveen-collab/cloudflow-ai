@@ -23,6 +23,7 @@ export default function ScaleReveal({
   children,
   delay = 0,
   className,
+  style,
   ...props
 }: ScaleRevealProps) {
   const reduced = useReducedMotion();
@@ -31,6 +32,7 @@ export default function ScaleReveal({
   return (
     <motion.div
       className={className}
+      style={{ minInlineSize: 0, ...style }}
       variants={reduced ? reducedMotionVariants : scaleIn}
       initial={reveal.initial}
       whileInView={reveal.whileInView}

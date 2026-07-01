@@ -44,7 +44,7 @@ export default function Optimization() {
       >
         {aggregated && (
           <div className={styles.wrapper}>
-            <HoverLift>
+            <HoverLift className={styles.cardOuter}>
               <Card
                 className={styles.card}
                 hover
